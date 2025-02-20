@@ -1,3 +1,4 @@
+**Live Demo**: https://sachinrajawat.github.io/Smart-Meeting-Assistant/
 # Smart Meeting Assistant
 
 A modern web application that provides real-time transcription, summarization, and organization of meeting content using AI technology.
