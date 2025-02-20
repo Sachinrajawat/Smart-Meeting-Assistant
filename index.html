@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Meeting Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Smart Meeting Assistant</h1>
+            <div class="status-bar">
+                <div class="status-indicator">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span id="recordingStatus">Ready to Record</span>
+                </div>
+                <div id="recordingTime" class="timer">00:00:00</div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Recording Controls -->
+            <div class="control-panel">
+                <div class="button-group">
+                    <button id="startBtn" class="btn primary">
+                        <span class="material-icons">mic</span>
+                        Start Recording
+                    </button>
+                    <button id="pauseBtn" class="btn secondary" disabled>
+                        <span class="material-icons">pause</span>
+                        Pause
+                    </button>
+                    <button id="stopBtn" class="btn danger" disabled>
+                        <span class="material-icons">stop</span>
+                        Stop
+                    </button>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <!-- Live Transcript -->
+                <section class="panel transcript-panel">
+                    <div class="panel-header">
+                        <h2>Live Transcript</h2>
+                        <button id="editTranscriptBtn" class="btn-icon">
+                            <span class="material-icons">edit</span>
+                        </button>
+                    </div>
+                    <div id="liveTranscript" class="panel-content" contenteditable="false"></div>
+                </section>
+
+                <!-- Meeting Summary -->
+                <section class="panel summary-panel">
+                    <div class="panel-header">
+                        <h2>Meeting Summary</h2>
+                    </div>
+                    <div class="panel-content">
+                        <div id="actionItems" class="summary-section">
+                            <h3>
+                                <span class="material-icons">assignment</span>
+                                Action Items
+                            </h3>
+                            <ul class="action-list"></ul>
+                        </div>
+
+                        <div id="keyPoints" class="summary-section">
+                            <h3>
+                                <span class="material-icons">lightbulb</span>
+                                Key Points
+                            </h3>
+                            <ul class="key-points-list"></ul>
+                        </div>
+
+                        <div id="decisions" class="summary-section">
+                            <h3>
+                                <span class="material-icons">gavel</span>
+                                Decisions
+                            </h3>
+                            <ul class="decisions-list"></ul>
+                        </div>
+
+                        <div id="dates" class="summary-section">
+                            <h3>
+                                <span class="material-icons">event</span>
+                                Detected Dates
+                            </h3>
+                            <ul class="dates-list"></ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-panel">
+                <button id="exportPdfBtn" class="btn secondary">
+                    <span class="material-icons">picture_as_pdf</span>
+                    Export PDF
+                </button>
+                <button id="addToCalendarBtn" class="btn secondary">
+                    <span class="material-icons">event</span>
+                    Add to Calendar
+                </button>
+                <button id="shareEmailBtn" class="btn secondary">
+                    <span class="material-icons">email</span>
+                    Share via Email
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Processing...</div>
+    </div>
+    <!-- Email Modal -->
+    <!-- <button id="shareEmailBtn" class="btn secondary">
+    <span class="material-icons">email</span>
+    Open in Gmail
+</button> -->
+
+    <!-- Calendar Modal -->
+    <!-- <button id="addToCalendarBtn" class="btn secondary">
+        <span class="material-icons">event</span>
+        Add to Google Calendar
+    </button> -->
+
+   
+    <script src="config/config.js"></script>
+    <script>
+        (function() {
+            emailjs.init(CONFIG.EMAIL.USER_ID);
+        })();
+    </script>
+    <script src="js/audioCapture.js"></script>
+    <script src="js/transcription.js"></script>
+    <script src="js/aiProcessor.js"></script>
+    <script src="js/calendarManager.js"></script>
+    <script src="js/emailManager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
