@@ -1,4 +1,14 @@
+## Demo Video
+
+[Click here to watch the demonstration video](https://drive.google.com/file/d/1Xe9WNAHiDOyGsJsq6L7DODFx_hNzBPKw/view?usp=sharing)
+
+Video includes:
+- Key features demonstration
+- Technical architecture explanation
+- Challenges faced and solutions implemented
+
 **Live Demo**: https://sachinrajawat.github.io/Smart-Meeting-Assistant/
+
 # Smart Meeting Assistant
 
 A modern web application that provides real-time transcription, summarization, and organization of meeting content using AI technology.
